@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { NavigationBarWrapper } from 'bam-revamp-website/server';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +29,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex min-h-screen w-full flex-col antialiased">
+            <header>
+              <NavigationBarWrapper locale={'th'} />
+            </header>
+            <main className="flex-grow">
+              {children}
+            </main>
+            <footer>
+              {/* <Footer /> */}
+            </footer>
+          </div>
       </body>
     </html>
   );
